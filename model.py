@@ -45,6 +45,20 @@ class MapMode():
         self.locations[location_number] = [10000, 10000]
         return -1
 
+    def check_borders(self):
+        if self.location_character[0] <= 0:
+            self.move_result(1,0)
+        if self.location_character[1] <= 0:
+            self.move_result(0,1)
+        if self.location_character[1] >= 630:
+            self.move_result(0,-1)
+        if self.location_character[0] >= 760:
+            self.move_result(-1,0)
+
+    def check_final_battle(self, location_number):
+        if location_number == 12:
+            return True
+
 
 
 class BattleMode:

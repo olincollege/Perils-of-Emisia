@@ -32,6 +32,11 @@ class MapController():
             return 2
         return 0
 
+    def fullscreen(self, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_f:
+                return True
+
 
 class BattleController():
 

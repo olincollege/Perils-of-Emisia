@@ -39,12 +39,15 @@ class MainCharacter(Characters):
     
     def attack(self, attack_type):
         if attack_type == "sword":
-            return self.basic_attack_value
+            return random.randint((self.basic_attack_value - 5),\
+                (self.basic_attack_value + 5))
         elif attack_type == "fireball" and self.mana >= 40:
             self.mana -= 40
-            return self.magic_attack_value
+            return random.randint((self.magic_attack_value - 5),\
+                (self.magic_attack_value + 5))
         elif attack_type == "fireball" and self.mana < 40:
-            return self.basic_attack_value
+            return random.randint((self.basic_attack_value - 5),\
+                (self.basic_attack_value + 5))
 
     def damaged(self, value):
         self.health -= value
@@ -89,7 +92,7 @@ class Monster(Characters):
         self.xp = 100
 
     def attack(self):
-        return self.attack_value
+        return random.randint((self.attack_value - 5), (self.attack_value + 5))
 
     def damaged(self, value):
         print(value)
@@ -105,6 +108,7 @@ class DemonLord(Monster):
 
     def __init__(self):
         self.name = "Demon Lord"
+        self.image = "Images/Demon.png"
         self.health = 300
         self.attack_value = 50
         self.escape_chance = -40
@@ -114,7 +118,8 @@ class DemonLord(Monster):
 class CorruptedArchDruid(Monster):
 
     def __init__(self):
-        self.name = "Corrupted ArchDruid"
+        self.name = "ArchDruid"
+        self.image = "Images/Druid.png"
         self.health = 120
         self.attack_value = 30
         self.escape_chance = -20
@@ -124,7 +129,8 @@ class CorruptedArchDruid(Monster):
 class CorruptedElfKing(Monster):
 
     def __init__(self):
-        self.name = "Corrupted Elf King"
+        self.name = "Elf Queen"
+        self.image = "Images/Elf-King.png"
         self.health = 150
         self.attack_value = 20
         self.escape_chance = 0
@@ -134,7 +140,8 @@ class CorruptedElfKing(Monster):
 class EvilRuneSmith(Monster):
 
     def __init__(self):
-        self.name = "Evil Runesmith"
+        self.name = "Runesmith"
+        self.image = "Images/Dwarf.png"
         self.health = 200
         self.attack_value = 20
         self.escape_chance = 20
@@ -145,6 +152,7 @@ class GoblinChief(Monster):
 
     def __init__(self):
         self.name = "Goblin Chief"
+        self.image = "Images/goblin.png"
         self.health = 50
         self.attack_value = 10
         self.escape_chance = -40
@@ -155,6 +163,7 @@ class GiantSpider(Monster):
 
     def __init__(self):
         self.name = "Giant Spider"
+        self.image = "Images/Spider.png"
         self.health = 100
         self.attack_value = 25
         self.escape_chance = -50
@@ -164,7 +173,8 @@ class GiantSpider(Monster):
 class EvilBannerlord(Monster):
 
     def __init__(self):
-        self.name = "Evil Bannerlord"
+        self.name = "Bannerlord"
+        self.image = "Images/Bannerlord.png"
         self.health = 100
         self.attack_value = 25
         self.escape_chance = 20
@@ -175,6 +185,7 @@ class Spymaster(Monster):
 
     def __init__(self):
         self.name = "Spymaster"
+        self.image = "Images/Spymaster.png"
         self.health = 100
         self.attack_value = 20
         self.escape_chance = -40
@@ -185,6 +196,7 @@ class IceQueen(Monster):
 
     def __init__(self):
         self.name = "Ice Queen"
+        self.image = "Images/Ice-Queen.png"
         self.health = 150
         self.attack_value = 30
         self.escape_chance = -20
@@ -195,6 +207,7 @@ class IceGiant(Monster):
 
     def __init__(self):
         self.name = "Ice Giant"
+        self.image = "Images/Ice-Giant.png"
         self.health = 300
         self.attack_value = 20
         self.escape_chance = 50
@@ -205,6 +218,7 @@ class OrcWarchief(Monster):
 
     def __init__(self):
         self.name = 'Orc Warchief'
+        self.image = "Images/Orc.png"
         self.health = 200
         self.attack_value = 30
         self.escape_chance = 20
@@ -215,6 +229,7 @@ class IceDragon(Monster):
 
     def __init__(self):
         self.name = "Ice Dragon"
+        self.image = "Images/Dragon.png"
         self.health = 300
         self.attack_value = 40
         self.escape_chance = 30
@@ -225,6 +240,7 @@ class Troll(Monster):
 
     def __init__(self):
         self.name = "Troll"
+        self.image = "Images/Giant.png"
         self.health = 130
         self.attack_value = 20
         self.escape_chance = 15
