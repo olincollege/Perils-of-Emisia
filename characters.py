@@ -109,7 +109,7 @@ class DemonLord(Monster):
     def __init__(self):
         self.name = "Demon Lord"
         self.image = "Images/Demon.png"
-        self.health = 300
+        self.health = 600
         self.attack_value = 50
         self.escape_chance = -40
         self.xp = 1000
@@ -121,7 +121,7 @@ class CorruptedArchDruid(Monster):
         self.name = "ArchDruid"
         self.image = "Images/Druid.png"
         self.health = 120
-        self.attack_value = 30
+        self.attack_value = 60
         self.escape_chance = -20
         self.xp = 100
 
@@ -132,7 +132,7 @@ class CorruptedElfKing(Monster):
         self.name = "Elf Queen"
         self.image = "Images/Elf-King.png"
         self.health = 150
-        self.attack_value = 20
+        self.attack_value = 30
         self.escape_chance = 0
         self.xp = 100
 
@@ -142,7 +142,7 @@ class EvilRuneSmith(Monster):
     def __init__(self):
         self.name = "Runesmith"
         self.image = "Images/Dwarf.png"
-        self.health = 200
+        self.health = 250
         self.attack_value = 20
         self.escape_chance = 20
         self.xp = 75
@@ -175,7 +175,7 @@ class EvilBannerlord(Monster):
     def __init__(self):
         self.name = "Bannerlord"
         self.image = "Images/Bannerlord.png"
-        self.health = 100
+        self.health = 150
         self.attack_value = 25
         self.escape_chance = 20
         self.xp = 60
@@ -197,8 +197,8 @@ class IceQueen(Monster):
     def __init__(self):
         self.name = "Ice Queen"
         self.image = "Images/Ice-Queen.png"
-        self.health = 150
-        self.attack_value = 30
+        self.health = 300
+        self.attack_value = 40
         self.escape_chance = -20
         self.xp = 90
 
@@ -208,8 +208,8 @@ class IceGiant(Monster):
     def __init__(self):
         self.name = "Ice Giant"
         self.image = "Images/Ice-Giant.png"
-        self.health = 300
-        self.attack_value = 20
+        self.health = 400
+        self.attack_value = 40
         self.escape_chance = 50
         self.xp = 150
 
@@ -219,8 +219,8 @@ class OrcWarchief(Monster):
     def __init__(self):
         self.name = 'Orc Warchief'
         self.image = "Images/Orc.png"
-        self.health = 200
-        self.attack_value = 30
+        self.health = 300
+        self.attack_value = 60
         self.escape_chance = 20
         self.xp = 100
 
@@ -230,8 +230,8 @@ class IceDragon(Monster):
     def __init__(self):
         self.name = "Ice Dragon"
         self.image = "Images/Dragon.png"
-        self.health = 300
-        self.attack_value = 40
+        self.health = 500
+        self.attack_value = 70
         self.escape_chance = 30
         self.xp = 200
 
@@ -242,7 +242,7 @@ class Troll(Monster):
         self.name = "Troll"
         self.image = "Images/Giant.png"
         self.health = 130
-        self.attack_value = 20
+        self.attack_value = 25
         self.escape_chance = 15
         self.xp = 50
         
