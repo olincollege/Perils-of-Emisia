@@ -17,6 +17,13 @@ class MapMode():
                  [33,330], [25,100]]
         self.defeated_monsters = []
         self.location_character = self.start_location
+        self.current_location = -1
+        self.stat_visibility = 2
+        self.running = True
+        self.current_action = None
+
+    def reset_current_action(self):
+        self.current_action = None
 
     def move_result(self, x_value, y_value):
         self.location_character[0] += x_value
@@ -58,6 +65,12 @@ class MapMode():
     def check_final_battle(self, location_number):
         if location_number == 12:
             return True
+
+    def change_stat_visibility(self, check):
+        if check == 1:
+            self.stat_visibility = 1
+        if check == 2:
+            self.stat_visibility = 2
 
 
 

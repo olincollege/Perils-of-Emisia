@@ -1,167 +1,126 @@
+"""
+The main file of Perils of Emisia game.
+"""
+
 import pygame
 from model import MapMode, BattleMode
 from controller import MapController, BattleController
-from view import MapView
+from view import HeroView, ViewActive
 import characters
 
+# Initiates Pygame module
 pygame.init()
 
+# Set up classes
 map_model = MapMode()
 map_controller = MapController(map_model)
-map_view = MapView(map_model)
+view = ViewActive()
 hero = characters.MainCharacter()
 
-font_fight = pygame.font.Font('freesansbold.ttf', 32)
-font_info = pygame.font.Font('freesansbold.ttf', 20)
-font_stats = pygame.font.Font('freesansbold.ttf', 16)
-
-running = True
-stat_visibility = 2
-location = -1
+# Set the pygame screen size
 screen = pygame.display.set_mode((988, 739))
 
-press_tab = font_info.render("Press Tab for Stats", True, (84,208,101))
-press_a = font_info.render("Press A for Slash", True, (200,200,200))
-press_s = font_info.render("Press S for Fireball (40 Mana)", True, (200,200,200))
-press_e = font_info.render("Press E to Try Escaping", True, (200,200,200))
-lose_text = font_fight.render("YOU DIED", True, (255, 10, 10))
-win_text = font_fight.render("YOU WON", True, (10,200,10))
-
+# Set the hero image and background images
 player = pygame.image.load('Images/Warrior.png').convert_alpha()
 map_background = pygame.image.load('Images/Emisia.jpg').convert()
 battle_background = pygame.image.load('Images/battle.png').convert()
 
-while running:
-    if location == -1:
-        screen.blit(map_background, (0,0))
-        screen.blit(player, (map_model.location_character))
-        screen.blit(press_tab, (10,70))
-        
-        if stat_visibility == 1:
-            for i in range(9):
-                stat_text = font_stats.render(map_view.stats(hero)[i], True, (255,255,255))
-                screen.blit(stat_text, (770,200+(16*i)))
-        
-        pygame.display.update()
+while map_model.running:
+    # Map Mode
+    if map_model.current_location == -1:
+        # Prepare what will be on screen each frame
+        view.show_map_frame(screen, map_model.stat_visibility, hero, map_model, map_background, player)
 
+        # Quit function
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
-        
+                map_model.running = False
+            # Player inputs
             movement = map_controller.move_control(event)
-            check_stats = map_controller.show_stats(event)
-            # switch_fullscreen = map_controller.fullscreen(event)
-            # if switch_fullscreen == True:
-            #     pygame.display.toggle_fullscreen()
-        
-            if check_stats == 1:
-                stat_visibility = 1
-            elif check_stats == 2:
-                stat_visibility = 2
-                pygame.display.update()
+            CHECK_STATS = map_controller.show_stats(event)
 
+            # When map_model.stat_visibility is 1, hero stats are visible on screen.
+        if CHECK_STATS == 1 or 2:
+            map_model.change_stat_visibility(CHECK_STATS)
+
+        # Hero movements handled here
         map_model.check_borders()
         map_model.move_result(movement[0], movement[1])
-        
+
+        # Check if hero is on an encounter site
         touch = map_model.check_touch()
-        if touch[0] == True:
-            location = touch[1]
-            current_battle = BattleMode(location)
+        if touch[0]:
+            # Check which monster is encountered
+            map_model.current_location = touch[1]
+            # Setup for the battle
+            current_battle = BattleMode(map_model.current_location)
             battle_controller = BattleController(current_battle)
             current_enemy = current_battle.current_enemy
             enemy_image = pygame.image.load(current_enemy.image).convert()
-        
+
             pygame.time.wait(1000)
+    # Battle Mode
     else:
-        screen.blit(battle_background, (0,0))
-        screen.blit(player, (100,500))
-        screen.blit(enemy_image, (700,500))
-        
-        hero_health_font = font_fight.render("Your Health: " +\
-             str(hero.health), True, (255,255,255))
-        hero_mana_font = font_fight.render("Your Mana: "+str(hero.mana),\
-             True, (255,255,255))
-        enemy_health_font = font_fight.render(current_enemy.name +\
-             " Health: " + str(current_enemy.health), True, (230,20,20))
-        screen.blit(press_a, (40, 650))
-        screen.blit(press_s, (220, 650))
-        screen.blit(press_e, (520, 650))
-        screen.blit(press_tab, (770, 650))
-        screen.blit(hero_mana_font, (50,82))
-        screen.blit(hero_health_font, (50,50))
-        screen.blit(enemy_health_font, (500, 50))
+        view.battle_screen(screen, battle_background, player, hero,\
+             current_enemy, enemy_image, map_model.stat_visibility)
 
-        if stat_visibility == 1:
-            for i in range(9):
-                stat_text = font_stats.render(map_view.stats(hero)[i], True, (255,255,255))
-                screen.blit(stat_text, (770,200+(16*i)))
-        
-        pygame.display.update()
-        
-        real_action = None
+        map_model.reset_current_action()
 
+        # Get player input
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
-            action = battle_controller.action_chioce(event, stat_visibility)
-            if action != None:
-                real_action = action
-                # print(real_action)
-                
-        if real_action != None:
-            if real_action == "sword" or "fireball":
-                if real_action not in ["sword", "fireball"]:
-                    print("empty")
-                else: 
-                    hero_damage = hero.attack(real_action)
+                map_model.running = False
+            action = battle_controller.action_chioce(event, map_model.stat_visibility)
+            if action is not None:
+                map_model.current_action = action
+
+        #The result of the player's action
+        if map_model.current_action is not None:
+            if map_model.current_action == "sword" or "fireball":
+                if map_model.current_action not in ["sword", "fireball"]:
+                    print("")
+                # If hero attacked.
+                else:
+                    hero_damage = hero.attack(map_model.current_action)
                     result = current_enemy.damaged(hero_damage)
+                    view.hero_damage(screen, map_model.current_action, hero_damage)
+                    # If hero killed the monster.
                     if result[0] == "Battle Over":
                         hero.post_battle(result[1])
-                        hero.level_up()
-                        map_model.monster_defeated(location)
-                        
-                        if map_model.check_final_battle(location):
-                            screen.blit(map_background, (0,0))
-                            screen.blit(player, (map_model.location_character))
-                            screen.blit(win_text, (450, 300))
-                            pygame.display.update()
-                            pygame.time.wait(10000)
-                            running = False
-                        
-                        location = -1
+                        map_model.monster_defeated(map_model.current_location)
+                        # If it was final battle with demon.
+                        if map_model.check_final_battle(map_model.current_location):
+                            map_model.running = view.win(screen, map_background,\
+                                 player, map_model)
+
+                        map_model.current_location = -1
+                    # If hero is still alive
                     elif result[0] == "battle not over":
                         enemy_damage = current_enemy.attack()
-                        damaged_result = hero.damaged(enemy_damage)
-                        
-                        if damaged_result == "Defeated":
-                            screen.blit(map_background, (0,0))
-                            screen.blit(player, (map_model.location_character))
-                            screen.blit(lose_text, (450, 300))
-                            pygame.display.update()
-                            pygame.time.wait(10000)
-                            running = False
-            if real_action == "escape":
-                escape = hero.escape(current_enemy.escape_chance)
-                if escape == True:
-                    location = -1
+                        view.monster_damage(screen, current_enemy.name, enemy_damage)
+                        DAMAGED_RESULT = hero.damaged(enemy_damage)
+                        # If monster killed the hero
+                        if DAMAGED_RESULT == "Defeated":
+                            map_model.running = view.defeated(screen,\
+                                 map_background, player, map_model)
+            # If player tried to escape
+            if map_model.current_action == "escape":
+                ESCAPE = hero.escape(current_enemy.escape_chance)
+                # If successfully escaped
+                if ESCAPE:
+                    view.escape_success(screen)
+                    map_model.current_location = -1
                     map_model.move_result(30, 30)
                     continue
+                # If couldn't escape
+                view.escape_fail(screen)
                 enemy_damage = current_enemy.attack()
-                damaged_result = hero.damaged(enemy_damage)
-                
-                if damaged_result == "Defeated":
-                    screen.blit(map_background, (0,0))
-                    screen.blit(player, (map_model.location_character))
-                    screen.blit(lose_text, (450, 300))
-                    pygame.display.update()
-                    pygame.time.wait(10000)
-                    running = False
-            if real_action == 1: 
-                # print("stats")
-                stat_visibility = real_action
-            if real_action == 2:
-                stat_visibility = real_action
-        print(stat_visibility)
-            
-
-            
+                view.monster_damage(screen, current_enemy.name, enemy_damage)
+                DAMAGED_RESULT = hero.damaged(enemy_damage)
+                # if monster killed the hero
+                if DAMAGED_RESULT == "Defeated":
+                    map_model.running = view.defeated(screen, map_background, player,\
+                         map_model) 
+            # Stat visibility
+            if map_model.current_action == 1 or 2:
+                map_model.change_stat_visibility(map_model.current_action)
