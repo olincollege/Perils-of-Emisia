@@ -5,7 +5,7 @@ Emisia is a fantasy fiction world created by Ezerith. The land is terrorized by 
 It is your duty to defeat its minions and save the free people of Emisia, Adventurer!
 
 # What The Game Actually Is
-Perils of Emisia is an RPG game with dungeon crawling elements. Through your journey, you will face thirteen enemies.
+Perils of Emisia is an RPG game with dungeon crawling elements. Through your journey, you will face thirteen unique enemies.
 
 The enemy | Its image
 ----------|-----------
@@ -54,8 +54,8 @@ Enemy Images: Ezerith using [Canva](canva.com)
 
 Map: Ezerith using [Inkarnate](https://inkarnate.com/)
 
-Battle Background: http://pixelartmaker.com/art/06a996de8509722
+Battle Background: [Pixelartmaker](http://pixelartmaker.com/art/06a996de8509722)
 
-Hero Image: https://craftpix.net/
+Hero Image: Craftpix(https://craftpix.net/)
 
 Technical support from Course Assistants of Software Design class of Olin College
