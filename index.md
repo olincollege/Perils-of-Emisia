@@ -10,7 +10,8 @@ table
 First row | second row
 ----------|-----------
 hey|![queen](https://github.com/olincollege/Perils-of-Emisia/blob/main/Images/Ice-Queen.png)
-HEY|hey
+HEY|![Ice-Giant](https://user-images.githubusercontent.com/78497957/117545895-bd237d00-aff5-11eb-894e-f442310a6d04.png)
+
 
 ## two symbols
 block quote:
