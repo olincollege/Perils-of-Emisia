@@ -1,7 +1,6 @@
 ## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/olincollege/Perils-of-Emisia/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
+![Emisia](https://user-images.githubusercontent.com/78497957/117544893-7b90d300-aff1-11eb-9d4b-fb9d93cfeac7.jpg)
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
