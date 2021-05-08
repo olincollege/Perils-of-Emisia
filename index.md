@@ -1,11 +1,11 @@
 # Welcome to The World of Emisia
 
 ![Emisia](https://user-images.githubusercontent.com/78497957/117544893-7b90d300-aff1-11eb-9d4b-fb9d93cfeac7.jpg)
-**Emisia is a fantasy fiction world created by Ezerith. The land is terrorized by the Arch Demon Sozoxan.
-It is your duty to defeat its minions and save the free people of Emisia, Adventurer!**
+Emisia is a fantasy fiction world created by Ezerith. The land is terrorized by the *Arch Demon Sozoxan*.
+It is your duty to defeat its minions and save the free people of Emisia, Adventurer!
 
 # What The Game Actually Is
-**Perils of Emisia is an RPG game with dungeon crawling elements. Through your journey, you will face thirteen enemies.**
+Perils of Emisia is an RPG game with dungeon crawling elements. Through your journey, you will face thirteen enemies.
 
 The enemy | Its image
 ----------|-----------
@@ -23,22 +23,27 @@ Evil Bannerlord|![Bannerlord](https://user-images.githubusercontent.com/78497957
 Orc Warchief|![Orc](https://user-images.githubusercontent.com/78497957/117547308-a00f9e00-b037-11eb-9758-b33c6c6d74e6.png)
 Demon Lord Sozoxan|![Demon](https://user-images.githubusercontent.com/78497957/117547315-a9990600-b037-11eb-9930-64e0f618de02.png)
 
-**Your goal is to stratigize the correct order to face your enemies and power up by gaining experience point. If you are brave, lucky and strong enough,
-you can defeat Sozoxan and save Emisia!**
+Your goal is to stratigize the correct order to face your enemies and gain experience points by defeating them. If you are brave, lucky and strong enough,
+you can defeat Sozoxan and save Emisia!
 
 
 
 # Systematic Features
+All the control options you can use at any point of the game is written on the screen to inform whenever you need them.
+
 
 Perils of Emisia has two main screens:
 
 ## Travel Screen
+Travelling screen enables you to travel on the map freely, searching the encounter sites that are around the world.
 
 ## Battle Screen
+When you find an encounter site on your journey, you will be taken to battle screen and fight with the enemy that has been lurking on the encounter site.
 
+The battles are described with information texts that pop up on the screen.
 
-### three symbols
-HEHE
+# How to Download the Game
+You can reach the game files from my github repo by clicking the button on top left of this screen or the following [link](https://github.com/olincollege/Perils-of-Emisia)
 
 ### Markdown
 
