@@ -39,4 +39,5 @@ DemonLord and changing the init method to whatever you desire.
 ## Credit
 
 You can check the game's website from olincollege.github.io/Perils-of-Emisia/
+
 This project is made by Ezerith
