@@ -37,10 +37,22 @@ Perils of Emisia has two main screens:
 ## Travel Screen
 Travelling screen enables you to travel on the map freely, searching the encounter sites that are around the world.
 
+![Screenshot from 2021-05-08 14-02-00](https://user-images.githubusercontent.com/78497957/117549323-76a83f80-b042-11eb-99f2-60d017a824dd.png)
+
+![Screenshot from 2021-05-08 14-02-47](https://user-images.githubusercontent.com/78497957/117549325-790a9980-b042-11eb-97db-02fcd579b272.png)
+
 ## Battle Screen
 When you find an encounter site on your journey, you will be taken to battle screen and fight with the enemy that has been lurking on the encounter site.
 
+![Screenshot from 2021-05-08 14-05-03](https://user-images.githubusercontent.com/78497957/117549337-832c9800-b042-11eb-8191-51b59bb36f36.png)
+![Screenshot from 2021-05-08 14-04-03](https://user-images.githubusercontent.com/78497957/117549338-858ef200-b042-11eb-9b9c-5f31db7f854a.png)
+
+
 The battles are described with information texts that pop up on the screen.
+
+![Screenshot from 2021-05-08 14-05-07](https://user-images.githubusercontent.com/78497957/117549339-8aec3c80-b042-11eb-80df-071ae269b2c4.png)
+![Screenshot from 2021-05-08 14-04-37](https://user-images.githubusercontent.com/78497957/117549341-8de72d00-b042-11eb-9f9f-5e2e1ed894ad.png)
+
 
 # How to Download the Game
 You can reach the game files from my github repo by clicking the button on top left of this screen or the following [link](https://github.com/olincollege/Perils-of-Emisia)
