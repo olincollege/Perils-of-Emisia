@@ -56,6 +56,6 @@ Map: Ezerith using [Inkarnate](https://inkarnate.com/)
 
 Battle Background: [Pixelartmaker](http://pixelartmaker.com/art/06a996de8509722)
 
-Hero Image: Craftpix(https://craftpix.net/)
+Hero Image: [Craftpix](https://craftpix.net/)
 
 Technical support from Course Assistants of Software Design class of Olin College
