@@ -5,11 +5,19 @@ Emisia is a fantasy fiction world created by Ezerith. The land is terrorized by 
 It is your duty to defeat its minions and save the free people of Emisia!
 
 # one symbol
-Hey
+table
+
+First row | second row
+----------------------
+hey|HEY
+HEY|hey
 ## two symbols
-hey
+block quote:
+
+>adventurer
+>help me cry.wav
 ### three symbols
-ho
+HEHE
 
 ### Markdown
 
