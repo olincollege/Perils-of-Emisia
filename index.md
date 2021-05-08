@@ -1,8 +1,8 @@
 ## Welcome to GitHub Pages
 
 ![Emisia](https://user-images.githubusercontent.com/78497957/117544893-7b90d300-aff1-11eb-9d4b-fb9d93cfeac7.jpg)
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
+Emisia is a fantasy fiction world created by me. The land is terrorized by the Arch Demon Sozoxan.
+It is your duty to defeat its minions and save the free people of Emisia
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
