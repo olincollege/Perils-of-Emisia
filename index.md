@@ -1,8 +1,16 @@
 ## Welcome to GitHub Pages
 
 ![Emisia](https://user-images.githubusercontent.com/78497957/117544893-7b90d300-aff1-11eb-9d4b-fb9d93cfeac7.jpg)
-Emisia is a fantasy fiction world created by me. The land is terrorized by the Arch Demon Sozoxan.
-It is your duty to defeat its minions and save the free people of Emisia
+Emisia is a fantasy fiction world created by Ezerith. The land is terrorized by the Arch Demon Sozoxan.
+It is your duty to defeat its minions and save the free people of Emisia!
+
+# one symbol
+Hey
+## two symbols
+hey
+### three symbols
+ho
+
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
