@@ -1,11 +1,11 @@
-## Welcome to The World of Emisia
+# Welcome to The World of Emisia
 
 ![Emisia](https://user-images.githubusercontent.com/78497957/117544893-7b90d300-aff1-11eb-9d4b-fb9d93cfeac7.jpg)
 Emisia is a fantasy fiction world created by Ezerith. The land is terrorized by the Arch Demon Sozoxan.
 It is your duty to defeat its minions and save the free people of Emisia, Adventurer!
 
 # What The Game Actually Is
-Perils of Emisia is an RPG game with dungeon crawling elements. In this game you face thirteen unique enemies.
+Perils of Emisia is an RPG game with dungeon crawling elements. Through your journey, you will face thirteen enemies.
 
 The enemy | Its image
 ----------|-----------
@@ -17,7 +17,7 @@ Evil Runemaster|![Dwarf](https://user-images.githubusercontent.com/78497957/1175
 Corrupted Elf Queen|![Elf King](https://user-images.githubusercontent.com/78497957/117547275-7eaeb200-b037-11eb-8c7d-23b083cbd250.png)
 Corrupted Arch Druid|![Druid](https://user-images.githubusercontent.com/78497957/117547281-85d5c000-b037-11eb-9447-18633c7d9b48.png)
 Ice Giant|![Ice-Giant](https://user-images.githubusercontent.com/78497957/117545895-bd237d00-aff5-11eb-894e-f442310a6d04.png)
-Ice Queen|![queen](https://github.com/olincollege/Perils-of-Emisia/blob/main/Images/Ice-Queen.png)
+Ice Queen|![Ice Queen](https://user-images.githubusercontent.com/78497957/117547493-8ae73f00-b038-11eb-89e5-916d5a7179bb.png)
 Ice Dragon|![Dragon](https://user-images.githubusercontent.com/78497957/117547295-95ed9f80-b037-11eb-8fb0-0dc000358ad5.png)
 Evil Bannerlord|![Bannerlord](https://user-images.githubusercontent.com/78497957/117547320-aef65080-b037-11eb-85f9-8df9d3579a8b.png)
 Orc Warchief|![Orc](https://user-images.githubusercontent.com/78497957/117547308-a00f9e00-b037-11eb-9758-b33c6c6d74e6.png)
@@ -32,7 +32,7 @@ you can defeat Sozoxan and save Emisia!
 block quote:
 
 >adventurer
->help me cry.wav
+>help me cry.wav<
 ### three symbols
 HEHE
 
