@@ -29,7 +29,7 @@ while map_model.running:
     # Map Mode
     if map_model.current_location == -1:
         # Prepare what will be on screen each frame
-        view.show_map_frame(screen,hero, map_background, player)
+        view.show_map_frame(screen, hero, map_background, player)
 
         # Quit function
         for event in pygame.event.get():
@@ -60,8 +60,8 @@ while map_model.running:
             pygame.time.wait(1000)
     # Battle Mode
     else:
-        view.battle_screen(screen, battle_background, player, hero,\
-             current_enemy, enemy_image)
+        view.battle_screen(screen, battle_background, player, hero,
+                           current_enemy, enemy_image)
 
         map_model.reset_current_action()
 
@@ -73,7 +73,7 @@ while map_model.running:
             if action is not None:
                 map_model.current_action = action
 
-        #The result of the player's action
+        # The result of the player's action
         if map_model.current_action is not None:
             if map_model.current_action == "sword" or "fireball":
                 if map_model.current_action not in ["sword", "fireball"]:
@@ -82,26 +82,26 @@ while map_model.running:
                 else:
                     hero_damage = hero.attack(map_model.current_action)
                     result = current_enemy.damaged(hero_damage)
-                    view.hero_damage(screen, map_model.current_action,\
-                        hero_damage)
+                    view.hero_damage(screen, map_model.current_action,
+                                     hero_damage)
                     # If hero killed the monster.
                     if result[0] == "Battle Over":
                         hero.post_battle(result[1])
                         # If it was final battle with demon.
                         if map_model.check_final_battle():
-                            map_model.running = view.win(screen,\
-                                map_background, player, map_model)
+                            map_model.running = view.win(screen,
+                                                         map_background, player, map_model)
                         map_model.monster_defeated()
                     # If hero is still alive
                     elif result[0] == "battle not over":
                         enemy_damage = current_enemy.attack()
-                        view.monster_damage(screen, current_enemy.name,\
-                            enemy_damage)
+                        view.monster_damage(screen, current_enemy.name,
+                                            enemy_damage)
                         DAMAGED_RESULT = hero.damaged(enemy_damage)
                         # If monster killed the hero
                         if DAMAGED_RESULT == "Defeated":
-                            map_model.running = view.defeated(screen,\
-                                 map_background, player, map_model)
+                            map_model.running = view.defeated(screen,
+                                                              map_background, player, map_model)
             # If player tried to escape
             if map_model.current_action == "escape":
                 ESCAPE = hero.escape(current_enemy.escape_chance)
@@ -118,8 +118,8 @@ while map_model.running:
                 DAMAGED_RESULT = hero.damaged(enemy_damage)
                 # if monster killed the hero
                 if DAMAGED_RESULT == "Defeated":
-                    map_model.running = view.defeated(screen, map_background,\
-                        player, map_model)
+                    map_model.running = view.defeated(screen, map_background,
+                                                      player, map_model)
             # Stat visibility
             if map_model.current_action == 1 or 2:
                 map_model.change_stat_visibility(map_model.current_action)

@@ -86,18 +86,18 @@ class MainCharacter(Characters):
         # Random is used to make luck a serious factor.
         if attack_type == "sword":
             return random.randint((self.basic_attack_value -
-                (self.basic_attack_value // 5)),
-                (self.basic_attack_value + (self.basic_attack_value // 5)))
+                                   (self.basic_attack_value // 5)),
+                                  (self.basic_attack_value + (self.basic_attack_value // 5)))
         elif attack_type == "fireball" and self.mana >= 40:
             self.mana -= 40
             return random.randint((self.magic_attack_value -
-                (self.magic_attack_value // 5)),
-                (self.magic_attack_value + (self.magic_attack_value // 5)))
+                                   (self.magic_attack_value // 5)),
+                                  (self.magic_attack_value + (self.magic_attack_value // 5)))
         # This line makes hero to use sword when it doesn't have enough mana.
         elif attack_type == "fireball" and self.mana < 40:
             return random.randint((self.basic_attack_value -
-                (self.basic_attack_value // 5)),
-                (self.basic_attack_value + (self.basic_attack_value // 5)))
+                                   (self.basic_attack_value // 5)),
+                                  (self.basic_attack_value + (self.basic_attack_value // 5)))
 
     def damaged(self, value):
         """
@@ -200,8 +200,8 @@ class Monster(Characters):
         """
         Returns how much damage the monster inflicted on the hero.
         """
-        return random.randint((self.attack_value - (self.attack_value // 5)),\
-            (self.attack_value + (self.attack_value // 5)))
+        return random.randint((self.attack_value - (self.attack_value // 5)),
+                              (self.attack_value + (self.attack_value // 5)))
 
     def damaged(self, value):
         """
@@ -266,6 +266,7 @@ class CorruptedArchDruid(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Corrupted Arch Druid.
@@ -295,6 +296,7 @@ class CorruptedElfKing(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Corrupted Elf King.
@@ -324,6 +326,7 @@ class EvilRuneSmith(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Evil Runesmith.
@@ -353,6 +356,7 @@ class GoblinChief(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Goblin Chief.
@@ -382,6 +386,7 @@ class GiantSpider(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Giant Spider.
@@ -411,6 +416,7 @@ class EvilBannerlord(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Evil Bannerlord.
@@ -440,6 +446,7 @@ class Spymaster(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Spymaster.
@@ -469,6 +476,7 @@ class IceQueen(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Ice Queen.
@@ -498,6 +506,7 @@ class IceGiant(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Ice Giant.
@@ -527,6 +536,7 @@ class OrcWarchief(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Orc Warchief.
@@ -556,6 +566,7 @@ class IceDragon(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Ice Dragon.
@@ -585,6 +596,7 @@ class Troll(Monster):
         xp: An integer representing how much xp will the hero gain if the
             monster is killed.
     """
+
     def __init__(self):
         """
         Initial state of the Troll.

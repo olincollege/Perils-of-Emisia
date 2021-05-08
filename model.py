@@ -5,6 +5,7 @@ Model component of Perils of Emisia
 import math
 import characters
 
+
 class MainModel():
     """
     The class that will be used to store information and methods that are
@@ -28,10 +29,11 @@ class MainModel():
         """
         Initial state of the class.
         """
-        self.start_location = [740,540]
-        self.locations = [[740,430],[590,350],[420,570],[610,145], [590,0],\
-            [220,0], [395,110], [345,150], [285,270], [210,630], [110,550],\
-                 [33,330], [25,100]]
+        self.start_location = [740, 540]
+        self.locations = [[740, 430], [590, 350], [420, 570], [610, 145], [590, 0],
+                          [220, 0], [395, 110], [345, 150],
+                          [285, 270], [210, 630], [110, 550],
+                          [33, 330], [25, 100]]
         self.location_character = self.start_location
         self.current_location = -1
         self.stat_visibility = 2
@@ -95,13 +97,13 @@ class MainModel():
         out of the map, don't allow it.
         """
         if self.location_character[0] <= 0:
-            self.move_result(1,0)
+            self.move_result(1, 0)
         if self.location_character[1] <= 0:
-            self.move_result(0,1)
+            self.move_result(0, 1)
         if self.location_character[1] >= 630:
-            self.move_result(0,-1)
+            self.move_result(0, -1)
         if self.location_character[0] >= 760:
-            self.move_result(-1,0)
+            self.move_result(-1, 0)
 
     def check_final_battle(self):
         """
@@ -130,12 +132,12 @@ class MainModel():
         Returns:
             The class of the current enemy that will be faced by the hero.
         """
-        monster_manual = {0: characters.GoblinChief(),\
-            1: characters.Troll(), 2: characters.Spymaster(),\
-            3: characters.EvilRuneSmith(), 4: characters.IceQueen(),\
-            5: characters.IceDragon(), 6: characters.IceGiant(),\
-            7: characters.GiantSpider(), 8: characters.EvilBannerlord(),\
-            9: characters.CorruptedElfKing(),\
-            10: characters.CorruptedArchDruid(), 11: characters.OrcWarchief(),\
-            12: characters.DemonLord()}
+        monster_manual = {0: characters.GoblinChief(),
+                          1: characters.Troll(), 2: characters.Spymaster(),
+                          3: characters.EvilRuneSmith(), 4: characters.IceQueen(),
+                          5: characters.IceDragon(), 6: characters.IceGiant(),
+                          7: characters.GiantSpider(), 8: characters.EvilBannerlord(),
+                          9: characters.CorruptedElfKing(),
+                          10: characters.CorruptedArchDruid(), 11: characters.OrcWarchief(),
+                          12: characters.DemonLord()}
         return monster_manual[self.current_location]

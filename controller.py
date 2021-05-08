@@ -7,6 +7,7 @@ import pygame
 # doesn't have any key methods but it is wrong and I don't know how to solve
 # that problem. Please disregard that.
 
+
 class Controller():
     """
     The class that will be used to interpret user input during the map phase.
@@ -14,6 +15,7 @@ class Controller():
     Attributes:
         _model: A class which is a part of the model component.
     """
+
     def __init__(self, model):
         """
         Initial state of the MapController class.
@@ -45,7 +47,7 @@ class Controller():
                 return [0, 0.1]
         elif event.type == pygame.KEYUP:
             return [0, 0]
-        return [0,0]
+        return [0, 0]
 
     def show_stats(self, event):
         """
@@ -96,4 +98,3 @@ class Controller():
                     return 1
             else:
                 return None
-

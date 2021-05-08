@@ -3,6 +3,7 @@ View component of the Perils of Emisia game
 """
 import pygame
 
+
 class HeroView():
     """
     Class that holds the written info about the hero
@@ -26,19 +27,19 @@ class HeroView():
         """
         Returns a list of stat info text.
         """
-        text = [f"Current Health: {self.hero.health}",\
-            f"Current Mana: {self.hero.mana}",\
-            f"Sword Damage: {self.hero.basic_attack_value}",\
-            f"Fireball Damage: {self.hero.magic_attack_value}",\
-            f"Health Regeneration: {self.hero.hp_regen}",\
-            f"Mana Regeneration: {self.hero.mana_regen}",\
-            f"Current XP: {self.hero.xp}",\
-            f"Level: {self.hero.level}",\
-            f"Maximum Health: {self.hero.max_health}",\
-            f"Maximum Mana: {self.hero.max_mana}"]
+        text = [f"Current Health: {self.hero.health}",
+                f"Current Mana: {self.hero.mana}",
+                f"Sword Damage: {self.hero.basic_attack_value}",
+                f"Fireball Damage: {self.hero.magic_attack_value}",
+                f"Health Regeneration: {self.hero.hp_regen}",
+                f"Mana Regeneration: {self.hero.mana_regen}",
+                f"Current XP: {self.hero.xp}",
+                f"Level: {self.hero.level}",
+                f"Maximum Health: {self.hero.max_health}",
+                f"Maximum Mana: {self.hero.max_mana}"]
         return text
 
-    def show_stats(self,screen):
+    def show_stats(self, screen):
         """
         Writes the desired stats info on the screen
 
@@ -46,8 +47,9 @@ class HeroView():
             screen: It is the screen component of pygame.
         """
         for i in range(10):
-            stat_text = self.font_stats.render(self.stats()[i], True, (255,255,255))
-            screen.blit(stat_text, (770,200+(16*i)))
+            stat_text = self.font_stats.render(
+                self.stats()[i], True, (255, 255, 255))
+            screen.blit(stat_text, (770, 200+(16*i)))
 
 
 class ViewActive():
@@ -72,12 +74,14 @@ class ViewActive():
     font_info = pygame.font.Font('freesansbold.ttf', 20)
     font_stats = pygame.font.Font('freesansbold.ttf', 16)
 
-    press_tab = font_info.render("Press Tab for Stats", True, (84,208,101))
-    press_a = font_info.render("Press A for Slash", True, (200,200,200))
-    press_s = font_info.render("Press S for Fireball (40 Mana)", True, (200,200,200))
-    press_e = font_info.render("Press E to Try Escaping", True, (200,200,200))
+    press_tab = font_info.render("Press Tab for Stats", True, (84, 208, 101))
+    press_a = font_info.render("Press A for Slash", True, (200, 200, 200))
+    press_s = font_info.render(
+        "Press S for Fireball (40 Mana)", True, (200, 200, 200))
+    press_e = font_info.render(
+        "Press E to Try Escaping", True, (200, 200, 200))
     lose_text = font_fight.render("YOU DIED", True, (255, 10, 10))
-    win_text = font_fight.render("YOU WON", True, (10,200,10))
+    win_text = font_fight.render("YOU WON", True, (10, 200, 10))
 
     def __init__(self, model):
         """
@@ -85,7 +89,6 @@ class ViewActive():
         in case.
         """
         self.model = model
-
 
     def show_map_frame(self, screen, hero, background, player):
         """
@@ -98,9 +101,9 @@ class ViewActive():
             player: An image representing the hero
         """
 
-        screen.blit(background, (0,0))
+        screen.blit(background, (0, 0))
         screen.blit(player, (self.model.location_character))
-        screen.blit(self.press_tab, (10,70))
+        screen.blit(self.press_tab, (10, 70))
 
         if self.model.stat_visibility == 1:
             hero_stats = HeroView(hero)
@@ -120,22 +123,22 @@ class ViewActive():
             enemy: A class representing the current enemy
             image: An image representin the current enemy
         """
-        screen.blit(background, (0,0))
-        screen.blit(player, (100,500))
-        screen.blit(image, (700,500))
+        screen.blit(background, (0, 0))
+        screen.blit(player, (100, 500))
+        screen.blit(image, (700, 500))
         screen.blit(self.press_a, (40, 650))
         screen.blit(self.press_s, (220, 650))
         screen.blit(self.press_e, (520, 650))
         screen.blit(self.press_tab, (770, 650))
 
-        hero_health_font = self.font_fight.render("Your Health: " +\
-             str(hero.health), True, (255,255,255))
-        hero_mana_font = self.font_fight.render("Your Mana: "+str(hero.mana),\
-             True, (255,255,255))
-        enemy_health_font = self.font_fight.render(enemy.name +\
-             " Health: " + str(enemy.health), True, (230,20,20))
-        screen.blit(hero_mana_font, (50,82))
-        screen.blit(hero_health_font, (50,50))
+        hero_health_font = self.font_fight.render("Your Health: " +
+                        str(hero.health), True, (255, 255, 255))
+        hero_mana_font = self.font_fight.render("Your Mana: "+str(hero.mana),
+                        True, (255, 255, 255))
+        enemy_health_font = self.font_fight.render(enemy.name +
+                        " Health: " + str(enemy.health), True, (230, 20, 20))
+        screen.blit(hero_mana_font, (50, 82))
+        screen.blit(hero_health_font, (50, 50))
         screen.blit(enemy_health_font, (500, 50))
 
         if self.model.stat_visibility == 1:
@@ -145,7 +148,7 @@ class ViewActive():
         # New frame
         pygame.display.update()
 
-    def defeated(self,screen, background, player, model):
+    def defeated(self, screen, background, player, model):
         """
         Draws the screen that you see when you lose.
 
@@ -158,7 +161,7 @@ class ViewActive():
         Returns:
             Returns False so the game window closes.
         """
-        screen.blit(background, (0,0))
+        screen.blit(background, (0, 0))
         screen.blit(player, (model.location_character))
         screen.blit(self.lose_text, (450, 300))
         pygame.display.update()
@@ -178,14 +181,14 @@ class ViewActive():
         Returns:
             Returns False so the game window closes.
         """
-        screen.blit(background, (0,0))
+        screen.blit(background, (0, 0))
         screen.blit(player, (model.location_character))
         screen.blit(self.win_text, (450, 300))
         pygame.display.update()
         pygame.time.wait(10000)
         return False
 
-    def hero_damage(self, screen,action, damage):
+    def hero_damage(self, screen, action, damage):
         """
         Draws the written description of hero's attack
 
@@ -195,13 +198,13 @@ class ViewActive():
             damage: An integer representing how much damage the hero dealt.
         """
         if action == "sword":
-            text = self.font_fight.render("Your sword slash dealt " +\
-                str(damage) +" damage.", True, (255, 255, 255))
-            screen.blit(text, (230,200))
+            text = self.font_fight.render("Your sword slash dealt " +
+                                          str(damage) + " damage.", True, (255, 255, 255))
+            screen.blit(text, (230, 200))
         elif action == "fireball":
-            text = self.font_fight.render("Your fireball dealt " + str(damage)\
-                + " damage.", True, (255, 255, 255))
-            screen.blit(text, (270,200))
+            text = self.font_fight.render("Your fireball dealt " + str(damage)
+                                          + " damage.", True, (255, 255, 255))
+            screen.blit(text, (270, 200))
 
         pygame.display.update()
         pygame.time.wait(1500)
@@ -216,9 +219,9 @@ class ViewActive():
             damage: An integer representin how much damage is dealt on hero.
         """
 
-        text = self.font_fight.render( name + " dealt " +\
-                str(damage) +" damage.", True, (255, 255, 255))
-        screen.blit(text, (230,260))
+        text = self.font_fight.render(name + " dealt " +
+                                      str(damage) + " damage.", True, (255, 255, 255))
+        screen.blit(text, (230, 260))
         pygame.display.update()
         pygame.time.wait(1500)
 
@@ -230,9 +233,9 @@ class ViewActive():
         Args:
             screen: Pygame screen component.
         """
-        text = self.font_fight.render("You successfully escaped!",\
-            True, (255, 255, 255))
-        screen.blit(text, (230,200))
+        text = self.font_fight.render("You successfully escaped!",
+                                      True, (255, 255, 255))
+        screen.blit(text, (230, 200))
         pygame.display.update()
         pygame.time.wait(1500)
 
@@ -244,8 +247,8 @@ class ViewActive():
             screen: Pygame screen component.
         """
 
-        text = self.font_fight.render("You failed to escape!",\
-            True, (255, 255, 255))
-        screen.blit(text, (230,200))
+        text = self.font_fight.render("You failed to escape!",
+                                      True, (255, 255, 255))
+        screen.blit(text, (230, 200))
         pygame.display.update()
         pygame.time.wait(1500)

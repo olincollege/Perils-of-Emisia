@@ -1,141 +1,113 @@
 """
-Model component of Perils of Emisia
+Test the character classes are working correctly.
 """
+from collections import Counter
+import pytest
+from model import MainModel
 
-import math
-import characters
 
-class MainModel():
+# Define sets of test cases.
+get_movements = [
+    # Check that movement towards positive side is working
+    ([20,20], [760,560]),
+    # Check that movement towards negative side is working
+    ([-20,-20], [720,520]),
+    # Check that when not moving, there is no error.
+    ([0,0], [740,540]),
+]
+
+get_touch = [
+    # Check that when character is at a encounter site, function understands it
+    ([420,570], [True, 2]),
+    # Check that when character is not at an encounter site, function does not
+    # misinterpret it.
+    ([0,0], [False, -1]),
+    # Check that negative version of the coordinates of an encounter site is
+    # not causing confusions.
+    ([-420,-570], [False, -1]),
+]
+
+
+@pytest.mark.parametrize("values,result", get_movements)
+def test_movement(values, result):
     """
-    The class that will be used to store information and methods that are
-    needed.
+    Test that movement method of model class is working correctly
 
-    Attributes:
-        start_location: A list representing the starting location of our hero.
-        locations: A list made out of lists that store the coordinate info of
-            encounter sites.
-        location_character: A list representing where our hero is currently.
-        current_location: An integer representing whether we are on map mode
-            or in a battle. if it is -1 it is map mode. Any other number is an
-            encounter.
-        running: The program is running when it is True. When it is False, the
-            program shuts down.
-        current_action: Its default is None but it changes to an integer or
-            string when the player takes an action in the battle mode.
+    Args:
+        values: A list of integers representing how much the character move.
+        result: A list of integers representing the final coordinates of the
+            character
     """
+    model = MainModel()
+    model.move_result(values[0], values[1])
+    assert model.location_character == result
 
-    def __init__(self):
-        """
-        Initial state of the class.
-        """
-        self.start_location = [740,540]
-        self.locations = [[740,430],[590,350],[420,570],[610,145], [590,0],\
-            [220,0], [395,110], [345,150], [285,270], [210,630], [110,550],\
-                 [33,330], [25,100]]
-        self.location_character = self.start_location
-        self.current_location = -1
-        self.stat_visibility = 2
-        self.running = True
-        self.current_action = None
+@pytest.mark.parametrize("coordinates,result", get_touch)
+def test_encounter_site(coordinates, result):
+    """
+    Test the collision detection between the hero and encounter sites.
 
-    def reset_current_action(self):
-        """
-        Resets the current action after the action is successfully made.
-        """
-        self.current_action = None
+    Args:
+        coordinates: a list of integers representing the coordinates of
+            the hero on the map
+        result: A list with boolean statement representing whether the hero is
+            at the site or not and an integer representing which encounter site
+            it is.
+    """
+    model = MainModel()
+    model.location_character = coordinates
+    assert model.check_touch() == result
 
-    def move_result(self, x_value, y_value):
-        """
-        Changes the location of the character depending on what is sent by
-        controller compound.
+def test_defeated_monster():
+    """
+    Test if a defeated monster's location is taken away from the encounter
+    site so hero cant get into the same fight she won.
+    """
+    model = MainModel()
+    model.current_location = 2
+    model.monster_defeated()
+    assert model.locations[2] == [10000,10000]
 
-        Args:
-            x_value: An integer representing how much the character should move
-                on x axis.
-            y_value: An integer representing how much the character should move
-                on y axis.
-        """
-        self.location_character[0] += x_value
-        self.location_character[1] += y_value
+def test_check_borders_x_1():
+    """
+    Test if the right border of the map is really impassable by hero.
+    """
+    model = MainModel()
+    model.location_character = [755,625]
+    for _ in range(100):
+        model.move_result(0.1,0)
+        model.check_borders()
+    assert model.location_character[0] <= 760
 
-    def check_touch(self):
-        """
-        Check if the hero icon is touching any of the encounter sites.
+def test_check_borders_x_2():
+    """
+    Test if the right border of the map is really impassable by hero.
+    """
+    model = MainModel()
+    model.location_character = [1,625]
+    for _ in range(100):
+        model.move_result(-0.1,0)
+        model.check_borders()
+    assert model.location_character[0] >= 0
 
-        Returns:
-            A list with first element being True or False depending on if
-            the character is touching any encounter site. The second element
-            is the location number of the touched encounter site, if the hero
-            is nouching nowhere, return -1
-        """
-        x_1 = self.location_character[0]
-        y_1 = self.location_character[1]
-        location_number = -1
-        for element in self.locations:
-            location_number += 1
-            x_2 = element[0]
-            y_2 = element[1]
-            if math.sqrt(((x_1 - x_2)**2)+((y_1 - y_2)**2)) <= 30:
-                return [True, location_number]
+def test_check_borders_y_1():
+    """
+    Test if the bottom border of the map is really impassable by hero.
+    """
+    model = MainModel()
+    model.location_character = [755,625]
+    for _ in range(100):
+        model.move_result(0,0.1)
+        model.check_borders()
+    assert model.location_character[1] <= 630
 
-        return [False, -1]
-
-    def monster_defeated(self):
-        """
-        If the enemy is defeated, change its encounter site's coordinates to
-        somewhere out of map so none of the encounters are repeated.
-        Also change the current_location so the game goes back to map mode.
-        """
-        self.locations[self.current_location] = [10000, 10000]
-        self.current_location = -1
-
-    def check_borders(self):
-        """
-        Check where the character is and if the character is trying to move
-        out of the map, don't allow it.
-        """
-        if self.location_character[0] <= 0:
-            self.move_result(1,0)
-        if self.location_character[1] <= 0:
-            self.move_result(0,1)
-        if self.location_character[1] >= 630:
-            self.move_result(0,-1)
-        if self.location_character[0] >= 760:
-            self.move_result(-1,0)
-
-    def check_final_battle(self):
-        """
-        Check if the battle won was the final battle.
-
-        Returns:
-            If it was final battle, return True.
-        """
-        if self.current_location == 12:
-            return True
-        return False
-
-    def change_stat_visibility(self, check):
-        """
-        Changes the stat_visibility from its current state.
-        """
-        if check == 1:
-            self.stat_visibility = 1
-        if check == 2:
-            self.stat_visibility = 2
-
-    def choose_monster(self):
-        """
-        Choose which monster will be faced in the current encounter site.
-
-        Returns:
-            The class of the current enemy that will be faced by the hero.
-        """
-        monster_manual = {0: characters.GoblinChief(),\
-            1: characters.Troll(), 2: characters.Spymaster(),\
-            3: characters.EvilRuneSmith(), 4: characters.IceQueen(),\
-            5: characters.IceDragon(), 6: characters.IceGiant(),\
-            7: characters.GiantSpider(), 8: characters.EvilBannerlord(),\
-            9: characters.CorruptedElfKing(),\
-            10: characters.CorruptedArchDruid(), 11: characters.OrcWarchief(),\
-            12: characters.DemonLord()}
-        return monster_manual[self.current_location]
+def test_check_borders_y_2():
+    """
+    Test if the up border of the map is really impassable by hero.
+    """
+    model = MainModel()
+    model.location_character = [755,1]
+    for _ in range(100):
+        model.move_result(0,-0.1)
+        model.check_borders()
+    assert model.location_character [1] >= 0
