@@ -8,9 +8,10 @@ It is your duty to defeat its minions and save the free people of Emisia!
 table
 
 First row | second row
-----------------------
+----------|-----------
 hey|HEY
 HEY|hey
+
 ## two symbols
 block quote:
 
