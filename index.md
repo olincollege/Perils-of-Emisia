@@ -9,7 +9,7 @@ table
 
 First row | second row
 ----------|-----------
-hey|[queen](https://github.com/olincollege/Perils-of-Emisia/blob/main/Images/Ice-Queen.png)
+hey|![queen](https://github.com/olincollege/Perils-of-Emisia/blob/main/Images/Ice-Queen.png)
 HEY|hey
 
 ## two symbols
