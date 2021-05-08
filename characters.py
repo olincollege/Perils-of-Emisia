@@ -183,8 +183,8 @@ class MainCharacter(Characters):
 
 class Monster(Characters):
     """
-        The general class all monster will be a part of.
-        Has all the methods each monster will use.
+    The general class all monster will be a part of.
+    Has all the methods each monster will use.
     """
     @abstractmethod
     def __init__(self):
@@ -223,7 +223,7 @@ class DemonLord(Monster):
     """
     The class that is holding stats for Demon Lord
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -253,7 +253,7 @@ class CorruptedArchDruid(Monster):
     """
     The class that is holding stats for Corrupted Arch Druid
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -282,7 +282,7 @@ class CorruptedElfKing(Monster):
     """
     The class that is holding stats for COrrupted Elf King
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -311,7 +311,7 @@ class EvilRuneSmith(Monster):
     """
     The class that is holding stats for Evil Runesmith
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -340,7 +340,7 @@ class GoblinChief(Monster):
     """
     The class that is holding stats for Goblin Chief
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -369,7 +369,7 @@ class GiantSpider(Monster):
     """
     The class that is holding stats for Giant Spider
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -398,7 +398,7 @@ class EvilBannerlord(Monster):
     """
     The class that is holding stats for Evil Bannerlord
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -427,7 +427,7 @@ class Spymaster(Monster):
     """
     The class that is holding stats for Spymaster
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -456,7 +456,7 @@ class IceQueen(Monster):
     """
     The class that is holding stats for Ice Queen
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -485,7 +485,7 @@ class IceGiant(Monster):
     """
     The class that is holding stats for Ice Giant
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -514,7 +514,7 @@ class OrcWarchief(Monster):
     """
     The class that is holding stats for Orc Warchief
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -543,7 +543,7 @@ class IceDragon(Monster):
     """
     The class that is holding stats for Ice Dragon
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is
@@ -572,7 +572,7 @@ class Troll(Monster):
     """
     The class that is holding stats for Troll
 
-        Attributes:
+    Attributes:
         name: A string representing the name of the monster which will be
             displayed during battle.
         image: A string representing the location of the image that is

@@ -3,18 +3,18 @@ The main file of Perils of Emisia game.
 """
 
 import pygame
-from model import MapMode, BattleMode
-from controller import MapController, BattleController
-from view import HeroView, ViewActive
+from model import MainModel
+from controller import Controller
+from view import ViewActive
 import characters
 
 # Initiates Pygame module
 pygame.init()
 
 # Set up classes
-map_model = MapMode()
-map_controller = MapController(map_model)
-view = ViewActive()
+map_model = MainModel()
+controller = Controller(map_model)
+view = ViewActive(map_model)
 hero = characters.MainCharacter()
 
 # Set the pygame screen size
@@ -29,17 +29,18 @@ while map_model.running:
     # Map Mode
     if map_model.current_location == -1:
         # Prepare what will be on screen each frame
-        view.show_map_frame(screen, map_model.stat_visibility, hero, map_model, map_background, player)
+        view.show_map_frame(screen,hero, map_background, player)
 
         # Quit function
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 map_model.running = False
             # Player inputs
-            movement = map_controller.move_control(event)
-            CHECK_STATS = map_controller.show_stats(event)
+            movement = controller.move_control(event)
+            CHECK_STATS = controller.show_stats(event)
 
-            # When map_model.stat_visibility is 1, hero stats are visible on screen.
+            # When map_model.stat_visibility is 1, hero stats are visible
+            # on screen.
         if CHECK_STATS == 1 or 2:
             map_model.change_stat_visibility(CHECK_STATS)
 
@@ -53,16 +54,14 @@ while map_model.running:
             # Check which monster is encountered
             map_model.current_location = touch[1]
             # Setup for the battle
-            current_battle = BattleMode(map_model.current_location)
-            battle_controller = BattleController(current_battle)
-            current_enemy = current_battle.current_enemy
+            current_enemy = map_model.choose_monster()
             enemy_image = pygame.image.load(current_enemy.image).convert()
 
             pygame.time.wait(1000)
     # Battle Mode
     else:
         view.battle_screen(screen, battle_background, player, hero,\
-             current_enemy, enemy_image, map_model.stat_visibility)
+             current_enemy, enemy_image)
 
         map_model.reset_current_action()
 
@@ -70,7 +69,7 @@ while map_model.running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 map_model.running = False
-            action = battle_controller.action_chioce(event, map_model.stat_visibility)
+            action = controller.action_chioce(event, map_model.stat_visibility)
             if action is not None:
                 map_model.current_action = action
 
@@ -83,21 +82,21 @@ while map_model.running:
                 else:
                     hero_damage = hero.attack(map_model.current_action)
                     result = current_enemy.damaged(hero_damage)
-                    view.hero_damage(screen, map_model.current_action, hero_damage)
+                    view.hero_damage(screen, map_model.current_action,\
+                        hero_damage)
                     # If hero killed the monster.
                     if result[0] == "Battle Over":
                         hero.post_battle(result[1])
-                        map_model.monster_defeated(map_model.current_location)
                         # If it was final battle with demon.
-                        if map_model.check_final_battle(map_model.current_location):
-                            map_model.running = view.win(screen, map_background,\
-                                 player, map_model)
-
-                        map_model.current_location = -1
+                        if map_model.check_final_battle():
+                            map_model.running = view.win(screen,\
+                                map_background, player, map_model)
+                        map_model.monster_defeated()
                     # If hero is still alive
                     elif result[0] == "battle not over":
                         enemy_damage = current_enemy.attack()
-                        view.monster_damage(screen, current_enemy.name, enemy_damage)
+                        view.monster_damage(screen, current_enemy.name,\
+                            enemy_damage)
                         DAMAGED_RESULT = hero.damaged(enemy_damage)
                         # If monster killed the hero
                         if DAMAGED_RESULT == "Defeated":
@@ -119,8 +118,8 @@ while map_model.running:
                 DAMAGED_RESULT = hero.damaged(enemy_damage)
                 # if monster killed the hero
                 if DAMAGED_RESULT == "Defeated":
-                    map_model.running = view.defeated(screen, map_background, player,\
-                         map_model) 
+                    map_model.running = view.defeated(screen, map_background,\
+                        player, map_model)
             # Stat visibility
             if map_model.current_action == 1 or 2:
                 map_model.change_stat_visibility(map_model.current_action)
